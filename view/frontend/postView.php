@@ -1,4 +1,7 @@
-<?php ob_start(); ?>
+<?php 
+$title = htmlspecialchars($post['pst_title']);
+ob_start();
+?>
 
 <!-- Blog entry -->
 <div class="w3-card-4 w3-margin w3-white">
