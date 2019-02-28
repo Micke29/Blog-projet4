@@ -33,9 +33,9 @@
 	  
 	    <hr>
 	    <div class="w3-margin-bottom">
-		    <form>
-		       	<input class="w3-input" type="text" placeholder="Prénom" required><br>
-		        <textarea class="w3-input" placeholder="Commentaire" required></textarea><br>
+		    <form action="index.php?action=addComment&amp;id=<?= $post['pst_id'] ?>" method="post">
+		       	<input id="author" class="w3-input" type="text" placeholder="Prénom" name="author" required><br>
+		        <textarea id="comment" class="w3-input" placeholder="Commentaire" name="comment" required></textarea><br>
 		        <input class="w3-button w3-black" type="submit" value="Commenter">
 		    </form>
 	    </div>
