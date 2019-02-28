@@ -20,7 +20,7 @@
 
   <!-- Header -->
   <header class="w3-container w3-center w3-padding-32"> 
-    <h1><b>Billet simple pour l'Alaska</b></h1>
+    <h1><b><a href="index.php">Billet simple pour l'Alaska</a></b></h1>
     <p class="w3-hide-medium w3-hide-small">Bienvenue sur le blog de <span class="w3-tag">Jean Forteroche</span></p>
     <p class="w3-hide-large">Bienvenue sur le blog de <span class="w3-tag"><a href="#bio">Jean Forteroche</a></span></p>
   </header>
@@ -123,8 +123,5 @@
       <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
     </div>
   </footer>
-
-  <script src="public/js/script.js"></script>
-
 </body>
 </html>

@@ -16,7 +16,7 @@ class PostManager extends Manager
 	public function getPost($postId)
 	{
 		$db = $this->dbConnect();
-		$req = $db->prepare('SELECT pst_id, pst_title, pst_content, DATE_FORMAT(pst_date, \'%d/%m/%Y à %Hh%imin\') AS pst_date_fr, pic_link, pic_title FROM t_posts_pst NATURAL JOIN t_picture_pic WHERE pst_id = ?');
+		$req = $db->prepare('SELECT pst_id, pst_title, pst_content, DATE_FORMAT(pst_date, \'%d/%m/%Y à %Hh%imin\') AS pst_date_fr, pic_link, pic_title, COUNT(cmt_id) AS cmt_number FROM t_posts_pst NATURAL JOIN t_picture_pic NATURAL JOIN t_comments_cmt WHERE pst_id = ? GROUP BY pst_id');
 		$req->execute(array($postId));
 		$post = $req->fetch();
 
