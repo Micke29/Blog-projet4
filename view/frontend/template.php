@@ -111,12 +111,51 @@
   <!-- END GRID -->
   </div><br>
 
+  <!-- Login modal -->
+  <div id="loginModal" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+      <div class="w3-center"><br>
+        <span onclick="document.getElementById('loginModal').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Fermer">&times;</span>
+        <i class="fa fa-user-circle w3-jumbo w3-circle w3-margin-top" aria-hidden="true"></i>
+      </div>
+
+      <form class="w3-container" method="post">
+        <div class="w3-section">         
+          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Pseudo" name="username" required>           
+          <input class="w3-input w3-border" type="password" placeholder="Mot de passe" name="password" required>
+          <button class="w3-button w3-block w3-black w3-section w3-padding" type="submit">Connexion</button>
+        </div>
+      </form>
+
+      <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+        <button onclick="document.getElementById('loginModal').style.display='none'" type="button" class="w3-button w3-red">Annuler</button>
+      </div>
+    </div>
+
+  <!-- END Login modal -->
+  </div>
+
   <!-- END w3-content -->
   </div>
 
   <!-- Footer -->
   <footer class="w3-container w3-dark-grey" style="padding:32px">
-    <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-arrow-up w3-margin-right"></i>Retour en haut</a>
+    <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-arrow-up w3-margin-right"></i>Retour en haut</a><br>
+  <?php
+  if(isset($_SESSION['admin']))
+  {
+    ?>
+    <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-sign-out w3-margin-right"></i>Déconnexion</a><br>
+    <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-pencil w3-margin-right"></i>Zone Admin</a><br>
+    <?php
+  }
+  else
+  {
+    ?>
+    <a onclick="document.getElementById('loginModal').style.display='block'" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-sign-in w3-margin-right"></i>Connexion</a>
+    <?php
+  }
+  ?>   
     <div class="w3-right w3-right-align">
       <p>Copyright &copy; 2019 Jean FORTEROCHE - Billet simple pour l'Alaska</p>
       <p><a>Mentions légales</a></p>

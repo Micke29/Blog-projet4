@@ -6,7 +6,7 @@ while($post = $posts->fetch())
 
 <!-- Blog entry -->
   <div class="w3-card-4 w3-margin w3-white">
-    <img src=<?= '"public/images/' . $post['pic_link'] . '"' ?> alt=<?= $post['pic_title'] ?> style="width:100%">
+    <img src="public/images/<?= $post['pic_link'] ?>" alt="<?= $post['pic_title'] ?>" style="width:100%">
     <div class="w3-container">
       <h3><b><?= htmlspecialchars($post['pst_title']) ?></b></h3>
     </div>

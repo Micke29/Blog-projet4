@@ -5,7 +5,7 @@ ob_start();
 
 <!-- Blog entry -->
 <div class="w3-card-4 w3-margin w3-white">
-	<img src=<?= '"public/images/' . htmlspecialchars($post['pic_link']) . '"' ?> alt=<?= htmlspecialchars($post['pic_title']) ?> style="width:100%">
+	<img src="public/images/<?= $post['pic_link'] ?>" alt="<?= $post['pic_title'] ?>" style="width:100%">
     <div class="w3-container">
     	<h3><b><?= htmlspecialchars($post['pst_title']) ?></b></h3>
     </div>
@@ -24,7 +24,8 @@ ob_start();
         	?>
 	        <div class="w3-row w3-margin-bottom">
 	          <div class="w3-col l10 m9">
-	            <h4><?= htmlspecialchars($comment['cmt_author']) ?> <span class="w3-opacity w3-medium"><?= htmlspecialchars($comment['cmt_date_fr']) ?></span></h4>
+	            <h4><?= htmlspecialchars($comment['cmt_author']) ?> <span class="w3-opacity w3-medium"><?= htmlspecialchars($comment['cmt_date_fr']) ?></span> <a href="#" class="fa fa-exclamation w3-text-red w3-margin-left" aria-hidden="true" title="Signaler"></a>
+	            </h4>
 	            <p><?= htmlspecialchars($comment['cmt_content']) ?></p>
 	          </div>
 	        </div>

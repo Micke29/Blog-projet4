@@ -15,7 +15,8 @@ CREATE TABLE IF NOT EXISTS `t_comments_cmt`
 		cmt_author  VARCHAR (32) NOT NULL,
 		cmt_content TEXT NOT NULL,
 		cmt_date    DATETIME NOT NULL,
-		pst_id      INTEGER (11) NOT NULL
+		pst_id      INTEGER (11) NOT NULL,
+		cmt_report   BOOLEAN NOT NULL DEFAULT FALSE
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `t_picture_pic`;
