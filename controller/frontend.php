@@ -33,3 +33,12 @@ function addComment($postId, $author, $comment)
 	if($affectedLines === false) throw new Exception('Impossible d\'ajouter le commentaire !');
 	else header('Location: index.php?action=post&id=' . $postId);
 }
+
+function report($postId)
+{
+	$commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
+
+	$commentManager->reportComment($_GET['commentId']);
+
+	header('Location: index.php?action=post&id=' . $postId);
+}

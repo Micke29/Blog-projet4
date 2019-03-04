@@ -22,4 +22,11 @@ class CommentManager extends Manager
 
 		return $affectedLine;
 	}
+
+	public function reportComment($commentId)
+	{
+		$db = $this->dbConnect();
+		$comments = $db->prepare('UPDATE t_comments_cmt SET cmt_report = 1 WHERE cmt_id = ?');
+		$comments->execute(array($commentId));
+	}
 }
