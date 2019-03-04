@@ -38,7 +38,8 @@ function report($postId)
 {
 	$commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
 
-	$commentManager->reportComment($_GET['commentId']);
+	$affectedLines = $commentManager->reportComment($_GET['commentId']);
 
-	header('Location: index.php?action=post&id=' . $postId);
+	if($affectedLines === false) throw new Exception('Une erreur est survenue !');
+	else header('Location: index.php?action=post&id=' . $postId);
 }

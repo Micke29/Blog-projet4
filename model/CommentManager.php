@@ -27,6 +27,8 @@ class CommentManager extends Manager
 	{
 		$db = $this->dbConnect();
 		$comments = $db->prepare('UPDATE t_comments_cmt SET cmt_report = 1 WHERE cmt_id = ?');
-		$comments->execute(array($commentId));
+		$affectedLine = $comments->execute(array($commentId));
+
+		return $affectedLine;
 	}
 }
