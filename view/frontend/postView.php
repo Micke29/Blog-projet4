@@ -7,12 +7,12 @@ ob_start();
 <div class="w3-card-4 w3-margin w3-white">
 	<img src="public/images/<?= $post['pic_link'] ?>" alt="<?= $post['pic_title'] ?>" style="width:100%">
     <div class="w3-container">
-    	<h3><b><?= htmlspecialchars($post['pst_title']) ?></b></h3>
+    	<h3><b><?= $title ?></b></h3>
     </div>
 
     <div class="w3-container">
-    	<p class="w3-justify"><?= htmlspecialchars($post['pst_content']) ?></p>                   
-    	<p class="w3-right"><span class="w3-padding w3-black"><b>Commentaire(s) </b><span class="w3-tag w3-white"><?= $post['cmt_number'] ?></span></span></p>
+    	<p class="w3-justify"><?= $post['pst_content'] ?></p>                   
+    	<p class="w3-right"><span class="w3-padding w3-black"><b>Commentaire(s) </b><span class="w3-tag w3-white"><?= htmlspecialchars($post['cmt_number']) ?></span></span></p>
       	<p class="w3-clear"></p>
   
       	<!-- Example of comment field -->

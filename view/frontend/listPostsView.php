@@ -12,9 +12,9 @@ while($post = $posts->fetch())
     </div>
 
     <div class="w3-container">
-      <p class="w3-justify"><?= htmlspecialchars($post['pst_content']) ?></p>        
+      <p class="w3-justify"><?= $post['pst_content'] ?></p>        
       <p class="w3-left"><a href="index.php?action=post&id=<?= $post['pst_id'] ?>"><button class="w3-button w3-padding-large w3-white w3-border w3-large">AFFICHER PLUS <i class="fa fa-angle-double-right"></i></button></a></p>           
-      <p class="w3-right"><a href="index.php?action=post&id=<?= $post['pst_id'] ?>#commentArea"><button class="w3-button w3-black"><b>Commentaire(s) </b><span class="w3-tag w3-white"><?= $post['cmt_number'] ?></button></a></span></p>
+      <p class="w3-right"><a href="index.php?action=post&id=<?= $post['pst_id'] ?>#commentArea"><button class="w3-button w3-black"><b>Commentaire(s) </b><span class="w3-tag w3-white"><?= htmlspecialchars($post['cmt_number']) ?></button></a></span></p>
       <p class="w3-clear"></p>
     </div>
   </div>
