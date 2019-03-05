@@ -41,5 +41,9 @@ function report($postId)
 	$affectedLines = $commentManager->reportComment($_GET['commentId']);
 
 	if($affectedLines === false) throw new Exception('Une erreur est survenue !');
-	else header('Location: index.php?action=post&id=' . $postId);
+	else
+	{
+		$_SESSION['report'] = true;
+		header('Location: index.php?action=post&id=' . $postId . '#commentArea');
+	}
 }

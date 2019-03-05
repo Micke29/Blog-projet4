@@ -18,13 +18,17 @@ ob_start();
       	<!-- Example of comment field -->
       	<div id="commentArea">
         	<hr>
+        	<div class="w3-container w3-center w3-pale-green w3-text-light-green <?= isset($_SESSION['report']) ? 'w3-show' : 'w3-hide' ?>">
+        		<p>Commentaire signalé</p>
+        	</div>
         	<?php
+        	if(isset($_SESSION['report'])) unset($_SESSION['report']);
         	while($comment = $comments->fetch())
 			{
         	?>
 	        <div class="w3-row w3-margin-bottom">
 	          <div class="w3-col l10 m9">
-	            <h4><?= htmlspecialchars($comment['cmt_author']) ?> <span class="w3-opacity w3-medium"><?= htmlspecialchars($comment['cmt_date_fr']) ?></span> <a href="index.php?action=report&amp;id=<?= $post['pst_id'] ?>&amp;commentId=<?= $comment['cmt_id'] ?>" class="fa fa-exclamation w3-text-red w3-margin-left" aria-hidden="true" title="Signaler"></a>
+	            <h4><?= htmlspecialchars($comment['cmt_author']) ?> <span class="w3-opacity w3-medium"><?= htmlspecialchars($comment['cmt_date_fr']) ?></span> <a href="index.php?action=report&amp;id=<?= $post['pst_id'] ?>&amp;commentId=<?= $comment['cmt_id'] ?>" title="Signaler"><i class="fa fa-exclamation w3-text-red w3-margin-left" aria-hidden="true"></i>&nbsp; Signaler</a>
 	            </h4>
 	            <p><?= htmlspecialchars($comment['cmt_content']) ?></p>
 	          </div>
