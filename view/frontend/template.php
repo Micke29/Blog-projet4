@@ -140,23 +140,26 @@
 
   <!-- Footer -->
   <footer class="w3-container w3-dark-grey" style="padding:32px">
-    <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-arrow-up w3-margin-right"></i>Retour en haut</a><br>
-  <?php
-  if(isset($_SESSION['admin']))
-  {
-    ?>
-    <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-sign-out w3-margin-right"></i>Déconnexion</a><br>
-    <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-pencil w3-margin-right"></i>Zone Admin</a><br>
+    <div class="w3-third">
+      <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-arrow-up w3-margin-right"></i>Retour en haut</a><br>
     <?php
-  }
-  else
-  {
+    if(isset($_SESSION['admin']))
+    {
+      ?>
+      <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-sign-out w3-margin-right"></i>Déconnexion</a>
+      <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-pencil w3-margin-right"></i>Zone Admin</a>
+      <?php
+    }
+    else
+    {
+      ?>
+      <a onclick="document.getElementById('loginModal').style.display='block'" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-sign-in w3-margin-right"></i>Connexion</a>
+      <?php
+    }
     ?>
-    <a onclick="document.getElementById('loginModal').style.display='block'" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-sign-in w3-margin-right"></i>Connexion</a>
-    <?php
-  }
-  ?>   
-    <div class="w3-right w3-right-align">
+    </div>
+       
+    <div class="w3-twothird w3-right-align">
       <p>Copyright &copy; 2019 Jean FORTEROCHE - Billet simple pour l'Alaska</p>
       <p><a>Mentions légales</a></p>
       <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
