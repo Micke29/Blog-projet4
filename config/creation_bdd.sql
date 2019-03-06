@@ -27,6 +27,14 @@ CREATE TABLE IF NOT EXISTS `t_picture_pic`
 		pic_title VARCHAR (32) NOT NULL
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
+DROP TABLE IF EXISTS `t_account_act`;
+CREATE TABLE IF NOT EXISTS `t_account_act`
+	(
+		act_id INTEGER (11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+		act_username VARCHAR (32) NOT NULL,
+		act_password VARCHAR (255) NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
 ALTER TABLE t_posts_pst ADD CONSTRAINT t_picture_pic_FK FOREIGN KEY ( pic_id ) REFERENCES t_picture_pic ( pic_id );
 
 ALTER TABLE t_comments_cmt ADD CONSTRAINT t_posts_pst_FK FOREIGN KEY ( pst_id ) REFERENCES t_posts_pst ( pst_id );

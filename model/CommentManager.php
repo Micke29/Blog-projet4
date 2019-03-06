@@ -31,4 +31,13 @@ class CommentManager extends Manager
 
 		return $affectedLine;
 	}
+
+	public function getCountReportComments()
+	{
+		$db = $this->dbConnect();
+		$req = $db->query('SELECT COUNT(cmt_id) AS cmt_report_total FROM t_comments_cmt WHERE cmt_report = 1');
+		$comments = $req->fetch();
+
+		return $comments;
+	}
 }

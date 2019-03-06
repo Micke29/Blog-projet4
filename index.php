@@ -1,5 +1,8 @@
 <?php
+session_start();
+
 require('controller/frontend.php');
+require('controller/backend.php');
 
 try
 {
@@ -24,6 +27,20 @@ try
 		{
 			if(isset($_GET['id']) && isset($_GET['commentId']) && $_GET['id'] > 0 && $_GET['commentId'] > 0) report($_GET['id']);
 			else throw new Exception('Aucun identifiant de billet envoyé');
+		}
+		elseif($_GET['action'] == 'login')
+		{
+			if(!empty($_POST['username']) && !empty($_POST['password'])) login();
+			else throw new Exception('Tous les champs ne sont pas remplis !');
+		}
+		elseif($_GET['action'] == 'logout')
+		{
+			if(isset($_SESSION['admin'])) logout();
+			else throw new Exception('Erreur de traitement !');
+		}
+		elseif($_GET['action'] == 'admin')
+		{
+			if(isset($_GET['part']) && $_GET['part'] == 'preview') preview();
 		}
 	}
 	else listPosts();

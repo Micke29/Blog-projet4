@@ -119,7 +119,7 @@
         <i class="fa fa-user-circle w3-jumbo w3-circle w3-margin-top" aria-hidden="true"></i>
       </div>
 
-      <form class="w3-container" method="post">
+      <form class="w3-container" action="index.php?action=login" method="post">
         <div class="w3-section">         
           <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Pseudo" name="username" required>           
           <input class="w3-input w3-border" type="password" placeholder="Mot de passe" name="password" required>
@@ -146,8 +146,8 @@
     if(isset($_SESSION['admin']))
     {
       ?>
-      <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-sign-out w3-margin-right"></i>Déconnexion</a>
-      <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-pencil w3-margin-right"></i>Zone Admin</a>
+      <a href="index.php?action=logout" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-sign-out w3-margin-right"></i>Déconnexion</a>
+      <a href="index.php?action=admin&part=preview" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-pencil w3-margin-right"></i>Zone Admin</a>
       <?php
     }
     else
