@@ -38,3 +38,5 @@ CREATE TABLE IF NOT EXISTS `t_account_act`
 ALTER TABLE t_posts_pst ADD CONSTRAINT t_picture_pic_FK FOREIGN KEY ( pic_id ) REFERENCES t_picture_pic ( pic_id );
 
 ALTER TABLE t_comments_cmt ADD CONSTRAINT t_posts_pst_FK FOREIGN KEY ( pst_id ) REFERENCES t_posts_pst ( pst_id );
+
+INSERT INTO `t_account_act` VALUES(1, 'moderateur', '$2y$10$z.miPUi3A0TavSvDnTPSp.f11ieEc4LrJLieadx6KtKxGP/khNTVC');
