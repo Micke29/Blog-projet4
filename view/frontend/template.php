@@ -112,11 +112,15 @@
   </div><br>
 
   <!-- Login modal -->
-  <div id="loginModal" class="w3-modal">
+  <div id="loginModal" class="w3-modal" style="<?php if(isset($_SESSION['badConnection'])) echo 'display: block'; ?>">
     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
       <div class="w3-center"><br>
         <span onclick="document.getElementById('loginModal').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Fermer">&times;</span>
         <i class="fa fa-user-circle w3-jumbo w3-circle w3-margin-top" aria-hidden="true"></i>
+        <div class="w3-container w3-margin-top w3-center w3-pale-red w3-text-deep-orange <?= isset($_SESSION['badConnection']) ? 'w3-show' : 'w3-hide' ?>">
+          <?php unset($_SESSION['badConnection']); ?>
+          <p>Identifiant ou mot de passe incorrect</p>
+        </div>
       </div>
 
       <form class="w3-container" action="index.php?action=login" method="post">
@@ -147,7 +151,7 @@
     {
       ?>
       <a href="index.php?action=logout" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-sign-out w3-margin-right"></i>Déconnexion</a>
-      <a href="index.php?action=admin&part=preview" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-pencil w3-margin-right"></i>Zone Admin</a>
+      <a href="index.php?action=admin&part=preview" target="_blank" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-pencil w3-margin-right"></i>Zone Admin</a>
       <?php
     }
     else

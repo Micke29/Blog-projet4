@@ -12,7 +12,7 @@ ob_start();
 
     <div class="w3-container">
     	<p class="w3-justify"><?= $post['pst_content'] ?></p>                   
-    	<p class="w3-right"><span class="w3-padding w3-black"><b>Commentaire(s) </b><span class="w3-tag w3-white"><?= htmlspecialchars($post['cmt_number']) ?></span></span></p>
+    	<p class="w3-right"><span class="w3-padding w3-black"><b>Commentaire(s)&nbsp;</b><span class="w3-tag w3-white"><?= htmlspecialchars($post['cmt_number']) ?></span></span></p>
       	<p class="w3-clear"></p>
   
       	<!-- Example of comment field -->
