@@ -29,7 +29,7 @@ class PostManager extends Manager
 	{
 		$result = false;
 
-		if($_FILES['picture']['error'] < 0)
+		if($_FILES['picture']['error'] == 0)
 		{
 			if($_FILES['picture']['size'] <= 80000)
 			{
