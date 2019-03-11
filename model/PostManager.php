@@ -31,31 +31,25 @@ class PostManager extends Manager
 
 		if($_FILES['picture']['error'] < 0)
 		{
-			$result = 1;
 			if($_FILES['picture']['size'] <= 80000)
 			{
-				$result = 2;
 				$valid_extension = array('jpg', 'jpeg', 'gif', 'png');
 
 				$upload_extension = strtolower(substr(strrchr($_FILES['picture']['name'], '.'), 1));
 				if(in_array($upload_extension,$valid_extension))
 				{
-					$result = 3;
-					$picture_size = getimagesize($_FILES['picture']['tmp_name']);
-					if($image_sizes[0] == 700 && $image_sizes[1] == 220)
+					$picture_sizes = getimagesize($_FILES['picture']['tmp_name']);
+					if($picture_sizes[0] == 700 && $picture_sizes[1] == 220)
 					{
-						$result = 4;
 						$name = uniqid(rand(), true);
 						$link = "public/images/" . $name . "." . $upload_extension;
-
-						$result = move_uploaded_file($_FILES['picture']['tmp_name'], $link);
-						if($result)
+		
+						if($result = move_uploaded_file($_FILES['picture']['tmp_name'], $link))
 						{
 							$db = $this->dbConnect();
 							$req = $db->prepare('INSERT INTO t_picture_pic(pic_link, pic_title) VALUES(?, ?)');
 							$req->execute(array($name, $title));
 						}
-						$result = 5;
 					}
 				}
 			}
@@ -67,9 +61,8 @@ class PostManager extends Manager
 	public function addPost($title, $content)
 	{
 		$result = false;
-		$upload = $this->addPicturePost($title);
 
-		if($upload)
+		if($upload = $this->addPicturePost($title))
 		{
 			$db = $this->dbConnect();
 			$req = $db->prepare('SELECT pic_id FROM t_picture_pic WHERE pic_title = ?');

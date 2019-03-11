@@ -44,7 +44,7 @@ function addArticle($title, $content)
 {
 	$postManager = new \OpenClassrooms\Blog\Model\PostManager();
 
-	$add = $postManager->addPicturePost($title);
+	$add = $postManager->addPost($title, $content);
 
 	if($add)
 	{
@@ -53,7 +53,7 @@ function addArticle($title, $content)
 	}
 	else
 	{
-		$_SESSION['file'] = $add; // Récupération du code erreur pour comprendre le problème, ne renvoi rien
+		$_SESSION['file'] = true;
 		header("Location: index.php?action=admin&part=addArticle");
 	}
 }
