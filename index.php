@@ -18,7 +18,7 @@ try
 		{
 			if(isset($_GET['id']) && $_GET['id'] > 0)
 			{
-				if(!empty($_POST['author']) && !empty($_POST['comment'])) addComment($_GET['id'], $_POST['author'], $_POST['comment']);
+				if(!empty($_POST['author']) && !empty($_POST['comment'])) addComment($_GET['id'], htmlspecialchars($_POST['author']), htmlspecialchars($_POST['comment']));
 				else throw new Exception('Tous les champs ne sont pas remplis !');
 			}
 			else throw new Exception('Aucun identifiant de billet envoyé');
@@ -40,8 +40,23 @@ try
 		}
 		elseif($_GET['action'] == 'admin')
 		{
-			if(isset($_GET['part']) && $_GET['part'] == 'preview') preview();
+			if(isset($_SESSION['admin']))
+			{
+				if(isset($_GET['part']))
+				{
+					if($_GET['part'] == 'preview') preview();
+					elseif($_GET['part'] == 'addArticle')
+					{
+						if(isset($_FILES['picture']) && !empty($_POST['title']) && !empty($_POST['content'])) addArticle($_POST['title'], $_POST['content']);
+						else require('view/backend/addArticle.php');
+					}
+					else throw new Exception('Erreur de redirection');
+				}
+				else preview();
+			}
+			else header("Location: index.php");
 		}
+		else throw new Exception('Erreur de redirection');
 	}
 	else listPosts();
 }

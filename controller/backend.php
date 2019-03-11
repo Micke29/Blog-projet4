@@ -1,6 +1,7 @@
 <?php
 
 require_once('model/AdminManager.php');
+require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 
 function login()
@@ -12,9 +13,13 @@ function login()
 	if($affectedLines['act_count'] == 1) 
 	{
 		$_SESSION['admin'] = true;
-		header("Location: index.php?action=admin&part=preview");
+		header("Location: index.php?action=admin");
 	}
-	else throw new Exception('Connexion impossible !');
+	else
+	{
+		$_SESSION['badConnection'] = true;
+		header("Location: index.php");
+	}
 }
 
 function logout()
@@ -33,4 +38,22 @@ function preview()
 	$comments = $commentManager->getCountReportComments();
 
 	require('view/backend/preview.php');
+}
+
+function addArticle($title, $content)
+{
+	$postManager = new \OpenClassrooms\Blog\Model\PostManager();
+
+	$add = $postManager->addPicturePost($title);
+
+	if($add)
+	{
+		$_SESSION['add'] = true;
+		header("Location: index.php?action=admin&part=preview");
+	}
+	else
+	{
+		$_SESSION['file'] = $add; // Récupération du code erreur pour comprendre le problème, ne renvoi rien
+		header("Location: index.php?action=admin&part=addArticle");
+	}
 }
