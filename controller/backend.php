@@ -58,7 +58,7 @@ function addArticle($title, $content)
 	}
 }
 
-function moderate()
+function moderateComments()
 {
 	$commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
 
