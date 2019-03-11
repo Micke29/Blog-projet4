@@ -57,3 +57,12 @@ function addArticle($title, $content)
 		header("Location: index.php?action=admin&part=addArticle");
 	}
 }
+
+function moderate()
+{
+	$commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
+
+	$reportComments = $commentManager->getReportComments();
+
+	require('view/backend/listCommentsModerateView.php');
+}

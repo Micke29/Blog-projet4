@@ -40,4 +40,12 @@ class CommentManager extends Manager
 
 		return $comments;
 	}
+
+	public function getReportComments()
+	{
+		$db = $this->dbConnect();
+		$comments = $db->query('SELECT cmt_id, cmt_author, cmt_content FROM t_comments_cmt WHERE cmt_report = 1');
+
+		return $comments;
+	}
 }

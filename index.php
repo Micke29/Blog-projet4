@@ -50,6 +50,7 @@ try
 						if(isset($_FILES['picture']) && !empty($_POST['title']) && !empty($_POST['content'])) addArticle($_POST['title'], $_POST['content']);
 						else require('view/backend/addArticle.php');
 					}
+					elseif($_GET['part'] == 'moderate') moderate();
 					else throw new Exception('Erreur de redirection');
 				}
 				else preview();

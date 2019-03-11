@@ -54,7 +54,7 @@
         <a class="w3-bar-item w3-padding w3-black"><i class="fa fa-comment" aria-hidden="true"></i>&nbsp; Commentaires</a>
         <ul>
           <li>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-ban w3-text-red" aria-hidden="true"></i>&nbsp; Modérer</a>
+            <a href="index.php?action=admin&part=moderate" class="w3-bar-item w3-button w3-padding"><i class="fa fa-ban w3-text-red" aria-hidden="true"></i>&nbsp; Modérer</a>
           </li>
         </ul>
       </li>     
