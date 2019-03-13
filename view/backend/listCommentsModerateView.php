@@ -12,15 +12,21 @@ ob_start();
 		    </thead>
 		    <tbody>
 		    	<?php
+		    	$idName = 0;
 		    	while($reportComment = $reportComments->fetch())
 				{
 		    	?>
 		    	<tr>
 			        <td><?= $reportComment['cmt_author'] ?></td>
 			        <td><?= $reportComment['cmt_content'] ?></td>
-			        <td><input type="radio" name="moderate" id="<?= $reportComment['cmt_id'] ?>" value="valid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="moderate" id="<?= $reportComment['cmt_id'] ?>" value="delete"></td>        
+			        <td>
+			        	<input type="radio" name="<?= "moderate" . $idName ?>" id="<?= $reportComment['cmt_id'] ?>" value="valid.<?= $reportComment['cmt_id'] ?>">
+			        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			        	<input type="radio" name="<?= "moderate" . $idName ?>" id="<?= $reportComment['cmt_id'] ?>" value="delete.<?= $reportComment['cmt_id'] ?>">
+			        </td>        
 			    </tr>
 			    <?php
+			    $idName++;
 				}
 			    ?>
 		    </tbody>
