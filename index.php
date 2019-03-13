@@ -48,7 +48,7 @@ try
 					elseif($_GET['part'] == 'addArticle')
 					{
 						if(isset($_FILES['picture']) && !empty($_POST['title']) && !empty($_POST['content'])) addArticle($_POST['title'], $_POST['content']);
-						else require('view/backend/addArticle.php');
+						else require('view/backend/addArticleView.php');
 					}
 					elseif($_GET['part'] == 'moderate') moderateComments();
 					else throw new Exception('Erreur de redirection');
