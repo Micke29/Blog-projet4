@@ -1,8 +1,9 @@
 <?php
 
 require_once('model/AdminManager.php');
-require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
+require_once('model/PictureManager.php');
+require_once('model/PostManager.php');
 
 function login()
 {
@@ -43,8 +44,9 @@ function preview()
 function addArticle($title, $content)
 {
 	$postManager = new \OpenClassrooms\Blog\Model\PostManager();
+	$pictureManager = new \OpenClassrooms\Blog\Model\PictureManager();
 
-	$add = $postManager->addPost($title, $content);
+	$add = $postManager->addPost($pictureManager, $title, $content);
 
 	if($add)
 	{
