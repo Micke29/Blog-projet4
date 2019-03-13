@@ -14,6 +14,16 @@ class CommentManager extends Manager
 		return $comments;
 	}
 
+	public function getCountComments($postId)
+	{
+		$db = $this->dbConnect();
+		$req = $db->prepare('SELECT COUNT(*) AS cmt_number FROM t_comments_cmt WHERE pst_id = ?');
+		$req->execute(array($postId));
+		$comments = $req->fetch();
+
+		return $comments;
+	}
+
 	public function postComment($postId, $author, $comment)
 	{
 		$db = $this->dbConnect();
