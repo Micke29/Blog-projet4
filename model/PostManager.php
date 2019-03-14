@@ -23,25 +23,47 @@ class PostManager extends Manager
 		return $post;
 	}
 
+	public function postPost($title, $content, $pictureId)
+	{
+		$db = $this->dbConnect();
+		$post = $db->prepare('INSERT INTO t_posts_pst(pst_title, pst_content, pst_date, pic_id) VALUES(?, ?, NOW(), ?)');
+		$affectedLine = $post->execute(array($title, $content, $pictureId));
+
+		return $affectedLine;
+	}
+
 	public function theExcerpt($string) { return substr($string, 0, 300).'...'; }
 
 	public function addPost($pictureManager, $title, $content)
 	{
 		$result = false;
 
-		if($upload = $pictureManager->addPicturePost($title))
+		if($_FILES['picture']['error'] != 4)
+		{
+			if($upload = $pictureManager->addPicturePost($title))
+			{
+				$db = $this->dbConnect();
+				$req = $db->prepare('SELECT pic_id FROM t_picture_pic WHERE pic_title = ?');
+				$req->execute(array($title));
+				$id = $req->fetch();
+
+				$pictureId = $id['pic_id'];
+
+				$affectedLine = $this->postPost($title, $content, $pictureId);
+				if($affectedLine !== false) $result = true;
+			}
+		}
+		else
 		{
 			$db = $this->dbConnect();
-			$req = $db->prepare('SELECT pic_id FROM t_picture_pic WHERE pic_title = ?');
-			$req->execute(array($title));
+			$req = $db->prepare('SELECT pic_id FROM t_picture_pic WHERE pic_title = "Default"');
+			$req->execute();
 			$id = $req->fetch();
 
 			$pictureId = $id['pic_id'];
 
-			$req = $db->prepare('INSERT INTO t_posts_pst(pst_title, pst_content, pst_date, pic_id) VALUES(?, ?, NOW(), ?)');
-			$req->execute(array($title, $content, $pictureId));
-
-			$result = true;
+			$affectedLine = $this->postPost($title, $content, $pictureId);
+			if($affectedLine !== false) $result = true;
 		}
 
 		return $result;
