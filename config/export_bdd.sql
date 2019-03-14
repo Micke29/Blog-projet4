@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Jeu 14 Mars 2019 à 08:08
+-- Généré le :  Jeu 14 Mars 2019 à 10:44
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.18
 
@@ -81,8 +81,9 @@ CREATE TABLE `t_picture_pic` (
 --
 
 INSERT INTO `t_picture_pic` (`pic_id`, `pic_link`, `pic_title`) VALUES
-(1, 'woods.jpg', 'Nature'),
-(2, 'bridge.jpg', 'Norway');
+(1, 'default.jpg', 'Default'),
+(2, 'woods.jpg', 'Nature'),
+(3, 'bridge.jpg', 'Norway');
 
 -- --------------------------------------------------------
 
@@ -103,8 +104,8 @@ CREATE TABLE `t_posts_pst` (
 --
 
 INSERT INTO `t_posts_pst` (`pst_id`, `pst_title`, `pst_content`, `pst_date`, `pic_id`) VALUES
-(1, 'TITLE HEADING', '<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>', '2019-02-01 00:00:00', 1),
-(2, 'BLOG ENTRY', '<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>', '2019-02-01 00:00:00', 2);
+(1, 'TITLE HEADING', '<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>', '2019-02-01 00:00:00', 2),
+(2, 'BLOG ENTRY', '<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>', '2019-02-01 00:00:00', 3);
 
 --
 -- Index pour les tables exportées
@@ -154,12 +155,12 @@ ALTER TABLE `t_comments_cmt`
 -- AUTO_INCREMENT pour la table `t_picture_pic`
 --
 ALTER TABLE `t_picture_pic`
-  MODIFY `pic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `pic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pour la table `t_posts_pst`
 --
 ALTER TABLE `t_posts_pst`
-  MODIFY `pst_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `pst_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- Contraintes pour les tables exportées
 --
