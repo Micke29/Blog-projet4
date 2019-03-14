@@ -38,7 +38,7 @@ class PostManager extends Manager
 	{
 		$result = false;
 
-		if($_FILES['picture']['error'] != 4)
+		if($_FILES['picture']['error'] != UPLOAD_ERR_NO_FILE)
 		{
 			if($upload = $pictureManager->addPicturePost($title))
 			{

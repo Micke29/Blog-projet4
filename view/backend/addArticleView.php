@@ -8,7 +8,7 @@ ob_start();
 	</div>
 
 	<h2 class="w3-xlarge">Création d'un article</h2>
-	<input type="hidden" name="MAX_FILE_SIZE" value="1000" />
+	<input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
 	<br><label for="picture">Illustration (dimensions minimales 200x150 | 1Mo Max) : </label>
 	<input type="file" name="picture" id="picture">
 	<br><br><label for="title">Titre</label>
