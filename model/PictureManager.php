@@ -9,9 +9,9 @@ class PictureManager extends Manager
 	{
 		$result = false;
 
-		if($_FILES['picture']['error'] == 0)
+		if($_FILES['picture']['error'] == UPLOAD_ERR_OK)
 		{
-			if($_FILES['picture']['size'] <= 1000)
+			if($_FILES['picture']['size'] <= 1000000)
 			{
 				$valid_extension = array('jpg', 'jpeg', 'gif', 'png');
 
@@ -21,8 +21,8 @@ class PictureManager extends Manager
 					$picture_sizes = getimagesize($_FILES['picture']['tmp_name']);
 					if($picture_sizes[0] > 200 && $picture_sizes[1] > 150)
 					{
-						$name = uniqid(rand());
-						$link = "public/images/" . $name . "." . $upload_extension;
+						$name = uniqid(rand(), true) . "." . $upload_extension;
+						$link = "public/images/" . $name;
 		
 						if($result = move_uploaded_file($_FILES['picture']['tmp_name'], $link))
 						{
