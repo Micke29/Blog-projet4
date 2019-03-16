@@ -57,7 +57,7 @@ try
 			}
 			else header("Location: index.php");
 		}
-		else throw new AdminException('Erreur de redirection');
+		else throw new UserException('Erreur de redirection');
 	}
 	else listPosts();
 }
