@@ -30,7 +30,7 @@ function addComment($postId, $author, $comment)
 
 	$affectedLines = $commentManager->postComment($postId, $author, $comment);
 
-	if($affectedLines === false) throw new Exception('Impossible d\'ajouter le commentaire !');
+	if($affectedLines === false) throw new UserException('Impossible d\'ajouter le commentaire !');
 	else header('Location: index.php?action=post&id=' . $postId);
 }
 
@@ -40,7 +40,7 @@ function report($postId)
 
 	$affectedLines = $commentManager->reportComment($_GET['commentId']);
 
-	if($affectedLines === false) throw new Exception('Une erreur est survenue !');
+	if($affectedLines === false) throw new UserException('Une erreur est survenue !');
 	else
 	{
 		$_SESSION['report'] = true;
