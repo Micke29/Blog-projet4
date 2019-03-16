@@ -145,7 +145,8 @@
   <!-- Footer -->
   <footer class="w3-container w3-dark-grey" style="padding:32px">
     <div class="w3-third">
-      <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-arrow-up w3-margin-right"></i>Retour en haut</a><br>
+      <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom w3-margin-right"><i class="fa fa-arrow-up w3-margin-right"></i>Retour en haut</a>
+      <a href="index.php" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-home"></i>&nbsp;&nbsp;Retour à l'Accueil</a><br>
     <?php
     if(isset($_SESSION['admin']))
     {

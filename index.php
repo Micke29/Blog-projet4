@@ -3,6 +3,8 @@ session_start();
 
 require('controller/backend.php');
 require('controller/frontend.php');
+require('model/AdminException.php');
+require('model/UserException.php');
 
 try
 {
@@ -68,9 +70,9 @@ catch (PDOException $e)
 }
 catch(UserException $e)
 {
-	echo '[Exception] : ', $e->getMessage();
+	require('view/frontend/errorView.php');
 }
 catch(AdminException $e)
 {
-	echo '[Exception] : ', $e->getMessage();
+	require('view/backend/errorView.php');
 }
