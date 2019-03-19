@@ -87,8 +87,8 @@ class PostManager extends Manager
 			if($upload = $pictureManager->updatePicturePost($postId, $title))
 			{
 				$db = $this->dbConnect();
-				$req = $db->prepare('SELECT pic_id FROM t_picture_pic WHERE pic_title = ?');
-				$req->execute(array($title));
+				$req = $db->prepare('SELECT pic_id FROM t_posts_pst WHERE pst_id = ?');
+				$req->execute(array($postId));
 				$id = $req->fetch();
 
 				$pictureId = $id['pic_id'];
@@ -100,8 +100,8 @@ class PostManager extends Manager
 		else
 		{
 			$db = $this->dbConnect();
-			$req = $db->prepare('SELECT pic_id FROM t_picture_pic WHERE pic_title = ?');
-			$req->execute(array($title));
+			$req = $db->prepare('SELECT pic_id FROM t_posts_pst WHERE pst_id = ?');
+			$req->execute(array($postId));
 			$id = $req->fetch();
 
 			$pictureId = $id['pic_id'];

@@ -78,12 +78,12 @@ function addArticle($title, $content)
 	}
 }
 
-function editArticle($title, $content)
+function editArticle($title, $content, $id)
 {
 	$postManager = new \OpenClassrooms\Blog\Model\PostManager();
 	$pictureManager = new \OpenClassrooms\Blog\Model\PictureManager();
 
-	$update = $postManager->editPost($pictureManager, $title, $content, $_GET['id']);
+	$update = $postManager->editPost($pictureManager, $id, $title, $content);
 
 	if($update)
 	{

@@ -45,22 +45,22 @@ class PictureManager extends Manager
 		if($upload = $this->addPicturePost($title))
 		{
 			$db = $this->dbConnect();
-			$req = $db->prepare('SELECT pic_id FROM t_post_pst WHERE pst_id = ?');
+			$req = $db->prepare('SELECT pic_id FROM t_posts_pst WHERE pst_id = ?');
 			$req->execute(array($postId));
 			$id = $req->fetch();
 
 			$oldPictureId = $id['pic_id'];
 
-			$req = $db->prepare('SELECT pic_id FROM t_picture_pic WHERE pic_title = ?');
-			$req->execute(array($postId));
+			$req = $db->prepare('SELECT pic_id FROM t_picture_pic WHERE pic_title = ? ORDER BY pic_id DESC');
+			$req->execute(array($title));
 			$id = $req->fetch();
 
 			$newPictureId = $id['pic_id'];
 
-			$req = $db->prepare('UPDATE t_post_pst SET pic_id = ? WHERE pst_id = ?');
+			$req = $db->prepare('UPDATE t_posts_pst SET pic_id = ? WHERE pst_id = ?');
 			$req->execute(array($newPictureId, $postId));
 
-			$this->deletePicturePost($oldPictureId);
+			if($oldPictureId != 1) $this->deletePicturePost($oldPictureId);
 
 			$result = true;
 		}
@@ -70,6 +70,7 @@ class PictureManager extends Manager
 
 	public function deletePicturePost($id)
 	{
+		$db = $this->dbConnect();
 		$req = $db->prepare('DELETE FROM t_picture_pic WHERE pic_id = ?');
 		$req->execute(array($id));
 	}
