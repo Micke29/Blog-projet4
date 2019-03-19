@@ -50,7 +50,7 @@ function listArticles()
 	require('view/backend/listArticlesView.php');
 }
 
-function truc($id)
+function showEditArticle($id)
 {
 	$postManager = new \OpenClassrooms\Blog\Model\PostManager();
 

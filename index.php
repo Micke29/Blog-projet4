@@ -55,7 +55,7 @@ try
 					elseif($_GET['part'] == 'editArticle')
 					{
 						if(isset($_GET['id']) && $_GET['id'] > 0 && isset($_FILES['picture']) && !empty($_POST['title']) && !empty($_POST['content'])) editArticle($_POST['title'], $_POST['content'], $_GET['id']);
-						elseif(isset($_GET['id']) && $_GET['id'] > 0) truc($_GET['id']);
+						elseif(isset($_GET['id']) && $_GET['id'] > 0) showEditArticle($_GET['id']);
 						else listArticles();
 					}
 					elseif($_GET['part'] == 'moderate') moderateComments();
