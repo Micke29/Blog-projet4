@@ -17,3 +17,8 @@ ul
 {
 	list-style: none;
 }
+
+div.tox.tox-tinymce
+{
+	height: 300px !important;
+}
