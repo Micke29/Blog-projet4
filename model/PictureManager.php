@@ -37,4 +37,35 @@ class PictureManager extends Manager
 		
 		return $result;
 	}
+
+	public function updatePicturePost($postId, $title)
+	{
+		$result = false;
+
+		if($upload = $this->addPicturePost($title))
+		{
+			$db = $this->dbConnect();
+			$req = $db->prepare('SELECT pic_id FROM t_post_pst WHERE pst_id = ?');
+			$req->execute(array($postId));
+			$id = $req->fetch();
+
+			$oldPictureId = $id['pic_id'];
+
+			$req = $db->prepare('SELECT pic_id FROM t_picture_pic WHERE pic_title = ?');
+			$req->execute(array($postId));
+			$id = $req->fetch();
+
+			$newPictureId = $id['pic_id'];
+
+			$req = $db->prepare('UPDATE t_post_pst SET pic_id = ? WHERE pst_id = ?');
+			$req->execute(array($newPictureId, $postId));
+
+			$req = $db->prepare('DELETE FROM t_picture_pic WHERE pic_id = ?');
+			$req->execute(array($oldPictureId));
+
+			$result = true;
+		}
+
+		return $result;
+	}
 }

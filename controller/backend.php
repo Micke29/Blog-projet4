@@ -41,6 +41,15 @@ function preview()
 	require('view/backend/preview.php');
 }
 
+function listArticles()
+{
+	$postManager = new \OpenClassrooms\Blog\Model\PostManager();
+
+	$posts = $postManager->getPosts();
+
+	require('view/backend/listArticlesView.php');
+}
+
 function addArticle($title, $content)
 {
 	$postManager = new \OpenClassrooms\Blog\Model\PostManager();
@@ -50,13 +59,32 @@ function addArticle($title, $content)
 
 	if($add)
 	{
-		$_SESSION['add'] = true;
+		$_SESSION['good'] = 'ajouté';
 		header("Location: index.php?action=admin&part=preview");
 	}
 	else
 	{
 		$_SESSION['file'] = true;
 		header("Location: index.php?action=admin&part=addArticle");
+	}
+}
+
+function editArticle($title, $content)
+{
+	$postManager = new \OpenClassrooms\Blog\Model\PostManager();
+	$pictureManager = new \OpenClassrooms\Blog\Model\PictureManager();
+
+	$update = $postManager->addPost($pictureManager, $title, $content);
+
+	if($update)
+	{
+		$_SESSION['good'] = 'modifié';
+		header("Location: index.php?action=admin&part=preview");
+	}
+	else
+	{
+		$_SESSION['error'] = true;
+		header("Location: index.php?action=admin&part=editArticle");
 	}
 }
 

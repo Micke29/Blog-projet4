@@ -32,6 +32,15 @@ class PostManager extends Manager
 		return $affectedLine;
 	}
 
+	public function updatePost($title, $content, $pictureId)
+	{
+		$db = $this->dbConnect();
+		$post = $db->prepare('UPDATE t_posts_pst SET pst_title = ?, pst_content = ?, pst_date = NOW(), pic_id = ? WHERE ');
+		$affectedLine = $post->execute(array($title, $content, $pictureId));
+
+		return $affectedLine;
+	}
+
 	public function theExcerpt($string) { return substr($string, 0, 300).'...'; }
 
 	public function addPost($pictureManager, $title, $content)
@@ -63,6 +72,41 @@ class PostManager extends Manager
 			$pictureId = $id['pic_id'];
 
 			$affectedLine = $this->postPost($title, $content, $pictureId);
+			if($affectedLine !== false) $result = true;
+		}
+
+		return $result;
+	}
+
+	public function editPost($pictureManager, $postId, $title, $content)
+	{
+		$result = false;
+
+		if($_FILES['picture']['error'] != UPLOAD_ERR_NO_FILE)
+		{
+			if($upload = $pictureManager->updatePicturePost($postId, $title))
+			{
+				$db = $this->dbConnect();
+				$req = $db->prepare('SELECT pic_id FROM t_picture_pic WHERE pic_title = ?');
+				$req->execute(array($title));
+				$id = $req->fetch();
+
+				$pictureId = $id['pic_id'];
+
+				$affectedLine = $this->updatePost($postId, $title, $content, $pictureId);
+				if($affectedLine !== false) $result = true;
+			}
+		}
+		else
+		{
+			$db = $this->dbConnect();
+			$req = $db->prepare('SELECT pic_id FROM t_picture_pic WHERE pic_title = "Default"');
+			$req->execute();
+			$id = $req->fetch();
+
+			$pictureId = $id['pic_id'];
+
+			$affectedLine = $this->updatePost($postId, $title, $content, $pictureId);
 			if($affectedLine !== false) $result = true;
 		}
 

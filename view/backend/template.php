@@ -43,7 +43,7 @@
             <a href="index.php?action=admin&amp;part=addArticle" class="w3-bar-item w3-button w3-padding"><i class="fa fa-plus w3-text-green" aria-hidden="true"></i>&nbsp; Ajouter</a>
           </li>
           <li>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil w3-text-grey" aria-hidden="true"></i>&nbsp; Modifier</a>
+            <a href="index.php?action=admin&amp;part=editArticle" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil w3-text-grey" aria-hidden="true"></i>&nbsp; Modifier</a>
           </li>
           <li>
             <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-trash w3-text-red" aria-hidden="true"></i>&nbsp; Supprimer</a>
@@ -69,11 +69,9 @@
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:300px;margin-top:43px;">
   <div class="w3-container w3-center w3-pale-green w3-text-light-green <?= isset($_SESSION['add']) ? 'w3-show' : 'w3-hide' ?>">
-    <p>Article ajouté</p>
+    <p>Article <?= $_SESSION['good'] ?></p>
+    <?php unset($_SESSION['good']); ?>
   </div>
-  <?php
-  if(isset($_SESSION['add'])) unset($_SESSION['add']);
-  ?>
 
   <?= $content ?>
 
