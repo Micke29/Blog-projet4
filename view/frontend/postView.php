@@ -18,7 +18,7 @@ $countComments = $commentManager->getCountComments($post['pst_id']);
       	<!-- Example of comment field -->
       	<div id="commentArea">
         	<hr>
-        	<div class="w3-container w3-center w3-pale-green w3-text-light-green <?= isset($_SESSION['report']) ? 'w3-show' : 'w3-hide' ?>">
+        	<div class="w3-container w3-center w3-pale-green w3-text-green <?= isset($_SESSION['report']) ? 'w3-show' : 'w3-hide' ?>">
         		<p>Commentaire signalé</p>
         	</div>
         	<?php
