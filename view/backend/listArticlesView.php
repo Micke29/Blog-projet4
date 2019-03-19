@@ -21,7 +21,7 @@ ob_start();
 		   	<tr>
 		   		<td><?= $post['pst_title'] ?></td>
 		   		<td><?= $post['pst_date_fr'] ?></td>
-		   		<td class="w3-center"><a href="index.php?action=admin&amp;part=articleView&amp;id=<?= $post['pst_id'] ?>"><button class="w3-button w3-black">Modifier</button></a></td>
+		   		<td class="w3-center"><a href="index.php?action=admin&amp;part=editArticle&amp;id=<?= $post['pst_id'] ?>"><button class="w3-button w3-black">Modifier</button></a></td>
 		   	</tr>
 		    <?php
 			}

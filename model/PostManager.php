@@ -28,15 +28,15 @@ class PostManager extends Manager
 		$db = $this->dbConnect();
 		$post = $db->prepare('INSERT INTO t_posts_pst(pst_title, pst_content, pst_date, pic_id) VALUES(?, ?, NOW(), ?)');
 		$affectedLine = $post->execute(array($title, $content, $pictureId));
-
+		
 		return $affectedLine;
 	}
 
-	public function updatePost($title, $content, $pictureId)
+	public function updatePost($postId, $title, $content, $pictureId)
 	{
 		$db = $this->dbConnect();
-		$post = $db->prepare('UPDATE t_posts_pst SET pst_title = ?, pst_content = ?, pst_date = NOW(), pic_id = ? WHERE ');
-		$affectedLine = $post->execute(array($title, $content, $pictureId));
+		$post = $db->prepare('UPDATE t_posts_pst SET pst_title = ?, pst_content = ?, pst_date = NOW(), pic_id = ? WHERE pst_id = ?');
+		$affectedLine = $post->execute(array($title, $content, $pictureId, $postId));
 
 		return $affectedLine;
 	}
@@ -100,8 +100,8 @@ class PostManager extends Manager
 		else
 		{
 			$db = $this->dbConnect();
-			$req = $db->prepare('SELECT pic_id FROM t_picture_pic WHERE pic_title = "Default"');
-			$req->execute();
+			$req = $db->prepare('SELECT pic_id FROM t_picture_pic WHERE pic_title = ?');
+			$req->execute(array($title));
 			$id = $req->fetch();
 
 			$pictureId = $id['pic_id'];

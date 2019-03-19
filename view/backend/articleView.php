@@ -12,9 +12,9 @@ ob_start();
 	<br><label for="picture">Illustration (dimensions minimales 200x150 | 1Mo Max) : </label>
 	<input type="file" name="picture" id="picture">
 	<br><br><label for="title">Titre</label>
-	<br><input class="w3-input w3-show-inline-block w3-center" type="text" name="title" id="title" placeholder="Chapitre n°X" style="width:35%" required>
+	<br><input class="w3-input w3-show-inline-block w3-center" type="text" name="title" id="title" value="<?= isset($post) ? $post['pst_title'] : '' ?>" placeholder="Chapitre n°X" style="width:35%" required>
 	<div class="w3-show-inline-block" style="width:90%">
-		<br><br><textarea class="tinymce w3-hide" name="content"></textarea>
+		<br><br><textarea class="tinymce w3-hide" name="content"><?= isset($post) ? $post['pst_content'] : '' ?></textarea>
 	</div>
 	<button class="w3-button w3-black w3-section w3-padding-small" type="submit" style="width:20%">Ajouter</button>
 </form>

@@ -50,6 +50,15 @@ function listArticles()
 	require('view/backend/listArticlesView.php');
 }
 
+function truc($id)
+{
+	$postManager = new \OpenClassrooms\Blog\Model\PostManager();
+
+	$post = $postManager->getPost($id);
+
+	require('view/backend/articleView.php');
+}
+
 function addArticle($title, $content)
 {
 	$postManager = new \OpenClassrooms\Blog\Model\PostManager();
@@ -74,7 +83,7 @@ function editArticle($title, $content)
 	$postManager = new \OpenClassrooms\Blog\Model\PostManager();
 	$pictureManager = new \OpenClassrooms\Blog\Model\PictureManager();
 
-	$update = $postManager->addPost($pictureManager, $title, $content);
+	$update = $postManager->editPost($pictureManager, $title, $content, $_GET['id']);
 
 	if($update)
 	{

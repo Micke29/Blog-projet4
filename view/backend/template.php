@@ -68,7 +68,7 @@
 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:300px;margin-top:43px;">
-  <div class="w3-container w3-center w3-pale-green w3-text-light-green <?= isset($_SESSION['add']) ? 'w3-show' : 'w3-hide' ?>">
+  <div class="w3-container w3-center w3-pale-green w3-text-light-green <?= isset($_SESSION['good']) ? 'w3-show' : 'w3-hide' ?>">
     <p>Article <?= $_SESSION['good'] ?></p>
     <?php unset($_SESSION['good']); ?>
   </div>
