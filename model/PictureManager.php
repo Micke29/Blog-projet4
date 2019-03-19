@@ -60,12 +60,17 @@ class PictureManager extends Manager
 			$req = $db->prepare('UPDATE t_post_pst SET pic_id = ? WHERE pst_id = ?');
 			$req->execute(array($newPictureId, $postId));
 
-			$req = $db->prepare('DELETE FROM t_picture_pic WHERE pic_id = ?');
-			$req->execute(array($oldPictureId));
+			$this->deletePicturePost($oldPictureId);
 
 			$result = true;
 		}
 
 		return $result;
+	}
+
+	public function deletePicturePost($id)
+	{
+		$req = $db->prepare('DELETE FROM t_picture_pic WHERE pic_id = ?');
+		$req->execute(array($id));
 	}
 }
