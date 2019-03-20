@@ -33,6 +33,13 @@ class CommentManager extends Manager
 		return $affectedLine;
 	}
 
+	public function deleteComments($postId)
+	{
+		$db = $this->dbConnect();
+		$req = $db->prepare('DELETE FROM t_comments_cmt WHERE pst_id = ?');
+		$req->execute(array($postId));
+	}
+
 	public function reportComment($commentId)
 	{
 		$db = $this->dbConnect();

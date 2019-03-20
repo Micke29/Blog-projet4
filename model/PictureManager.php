@@ -5,6 +5,16 @@ require_once("model/Manager.php");
 
 class PictureManager extends Manager
 {
+	public function idPicturePost($postId)
+	{
+		$db = $this->dbConnect();
+		$req = $db->prepare('SELECT pic_id FROM t_posts_pst WHERE pst_id = ?');
+		$req->execute(array($postId));
+		$id = $req->fetch();
+
+		return $id['pic_id'];
+	}
+
 	public function addPicturePost($title)
 	{
 		$result = false;
@@ -68,10 +78,18 @@ class PictureManager extends Manager
 		return $result;
 	}
 
-	public function deletePicturePost($id)
+	public function deletePicturePost($pictureId)
 	{
 		$db = $this->dbConnect();
+		$req = $db->prepare('SELECT pic_link FROM t_picture_pic WHERE pic_id = ?');
+		$req->execute(array($pictureId));
+		$tmp = $req->fetch();
+
+		$link = 'public/images/' . $tmp['pic_link'];
+
 		$req = $db->prepare('DELETE FROM t_picture_pic WHERE pic_id = ?');
-		$req->execute(array($id));
+		$req->execute(array($pictureId));
+
+		$test = unlink($link);
 	}
 }

@@ -41,6 +41,13 @@ class PostManager extends Manager
 		return $affectedLine;
 	}
 
+	public function deletePost($postId)
+	{
+		$db = $this->dbConnect();
+		$post = $db->prepare('DELETE FROM t_posts_pst WHERE pst_id = ?');
+		$affectedLine = $post->execute(array($postId));
+	}
+
 	public function theExcerpt($string) { return substr($string, 0, 300).'...'; }
 
 	public function addPost($pictureManager, $title, $content)

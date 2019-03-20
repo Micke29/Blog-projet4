@@ -50,6 +50,15 @@ function listArticles()
 	require('view/backend/listArticlesView.php');
 }
 
+function listRemoveArticles()
+{
+	$postManager = new \OpenClassrooms\Blog\Model\PostManager();
+
+	$posts = $postManager->getPosts();
+
+	require('view/backend/listRemoveArticlesView.php');
+}
+
 function showEditArticle($id)
 {
 	$postManager = new \OpenClassrooms\Blog\Model\PostManager();
@@ -95,6 +104,26 @@ function editArticle($title, $content, $id)
 		$_SESSION['error'] = true;
 		header("Location: index.php?action=admin&part=editArticle");
 	}
+}
+
+function removeArticle()
+{
+	$postManager = new \OpenClassrooms\Blog\Model\PostManager();
+	$commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
+	$pictureManager = new \OpenClassrooms\Blog\Model\PictureManager();
+
+	foreach($_POST['delete'] as $postId)
+	{
+		$commentManager->deleteComments($postId);
+
+		$pictureId = $pictureManager->idPicturePost($postId);
+		$postManager->deletePost($postId);
+
+		if($pictureId != 1) $pictureManager->deletePicturePost($pictureId);
+	}
+
+	$_SESSION['good'] = 'supprimé';
+	header("Location: index.php?action=admin&part=preview");
 }
 
 function moderateComments()

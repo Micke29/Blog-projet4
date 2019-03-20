@@ -58,6 +58,11 @@ try
 						elseif(isset($_GET['id']) && $_GET['id'] > 0) showEditArticle($_GET['id']);
 						else listArticles();
 					}
+					elseif($_GET['part'] == 'removeArticle')
+					{
+						if(isset($_POST['delete'])) removeArticle();
+						else listRemoveArticles();
+					}
 					elseif($_GET['part'] == 'moderate') moderateComments();
 					else throw new AdminException('Erreur de redirection');
 				}

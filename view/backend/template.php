@@ -46,7 +46,7 @@
             <a href="index.php?action=admin&amp;part=editArticle" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil w3-text-grey" aria-hidden="true"></i>&nbsp; Modifier</a>
           </li>
           <li>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-trash w3-text-red" aria-hidden="true"></i>&nbsp; Supprimer</a>
+            <a href="index.php?action=admin&amp;part=removeArticle" class="w3-bar-item w3-button w3-padding"><i class="fa fa-trash w3-text-red" aria-hidden="true"></i>&nbsp; Supprimer</a>
           </li>
         </ul>
       </li>
