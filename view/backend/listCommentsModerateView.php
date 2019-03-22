@@ -19,10 +19,10 @@ ob_start();
 		        <td><?= $reportComment['cmt_author'] ?></td>
 		        <td><?= $reportComment['cmt_content'] ?></td>
 		        <td>
-		        	<a href="index.php?action=admin&amp;part=moderate&amp;moderate=valid&amp;id=<?= $reportComment['cmt_id'] ?>"><button class="w3-button w3-black w3-padding-right">Valider</button></a>
+		        	<a href="index.php?action=admin&amp;part=moderate&amp;moderate=valid&amp;id=<?= $reportComment['cmt_id'] ?>"><button class="w3-btn w3-black w3-hover-green w3-padding-right">Valider</button></a>
 		        </td>
 		        <td>
-		        	<a href="index.php?action=admin&amp;part=moderate&amp;moderate=delete&amp;id=<?= $reportComment['cmt_id'] ?>"><button class="w3-button w3-black">Supprimer</button></a>
+		        	<a href="index.php?action=admin&amp;part=moderate&amp;moderate=delete&amp;id=<?= $reportComment['cmt_id'] ?>"><button class="w3-btn w3-black w3-hover-red">Supprimer</button></a>
 		        </td>        
 		    </tr>
 		    <?php

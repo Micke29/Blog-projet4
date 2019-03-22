@@ -71,7 +71,7 @@
         <p>Entrez votre adresse e-mail ci-dessous et recevez des notifications sur les derniers articles du blog.</p>
         <form>
           <input class="w3-input w3-border" type="email" placeholder="E-mail" style="width:100%" spellcheck="false" required><br>
-          <input class="w3-button w3-block w3-red" type="submit" value="Souscrire"><br>
+          <input class="w3-btn w3-block w3-red" type="submit" value="Souscrire"><br>
         </form>
       </div>
     </div>
@@ -88,7 +88,7 @@
       <div class="w3-center"><br>
         <span onclick="document.getElementById('loginModal').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Fermer">&times;</span>
         <i class="fa fa-user-circle w3-jumbo w3-circle w3-margin-top" aria-hidden="true"></i>
-        <div class="w3-container w3-margin-top w3-center w3-pale-red w3-text-deep-orange <?= isset($_SESSION['badConnection']) ? 'w3-show' : 'w3-hide' ?>">
+        <div class="w3-container w3-margin-top w3-center w3-pale-red w3-text-red <?= isset($_SESSION['badConnection']) ? 'w3-show' : 'w3-hide' ?>">
           <?php unset($_SESSION['badConnection']); ?>
           <p>Identifiant ou mot de passe incorrect</p>
         </div>
