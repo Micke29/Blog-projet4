@@ -30,7 +30,7 @@ $countComments = $commentManager->getCountComments($post['pst_id']);
 	          <div class="w3-col l10 m9">
 	            <h4 style="margin-bottom: 0"><?= htmlspecialchars($comment['cmt_author']) ?> <span class="w3-opacity w3-medium"><?= htmlspecialchars($comment['cmt_date_fr']) ?></span>
 	            </h4>
-	            <h6 style="margin: 0"><a class="w3-text-red" href="index.php?action=report&amp;id=<?= $post['pst_id'] ?>&amp;commentId=<?= $comment['cmt_id'] ?>" title="Signaler"><i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;Signaler</a></h6>
+	            <h6 style="margin: 0"><a class="w3-text-red" href="./?action=report&amp;id=<?= $post['pst_id'] ?>&amp;commentId=<?= $comment['cmt_id'] ?>" title="Signaler"><i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;Signaler</a></h6>
 	            <p><?= htmlspecialchars($comment['cmt_content']) ?></p>
 	          </div>
 	        </div>
@@ -42,7 +42,7 @@ $countComments = $commentManager->getCountComments($post['pst_id']);
 	  
 	    <hr>
 	    <div class="w3-margin-bottom">
-		    <form action="index.php?action=addComment&amp;id=<?= $post['pst_id'] ?>" method="post">
+		    <form action="./?action=addComment&amp;id=<?= $post['pst_id'] ?>" method="post">
 		       	<input id="author" class="w3-input" type="text" placeholder="Prénom" name="author" required><br>
 		        <textarea id="comment" class="w3-input" placeholder="Commentaire" name="comment" required></textarea><br>
 		        <input class="w3-button w3-black" type="submit" value="Commenter">

@@ -31,7 +31,7 @@ function addComment($postId, $author, $comment)
 	$affectedLines = $commentManager->postComment($postId, $author, $comment);
 
 	if($affectedLines === false) throw new UserException('Impossible d\'ajouter le commentaire !');
-	else header('Location: index.php?action=post&id=' . $postId);
+	else header('Location: ./?action=post&id=' . $postId);
 }
 
 function report($postId)
@@ -44,6 +44,6 @@ function report($postId)
 	else
 	{
 		$_SESSION['report'] = true;
-		header('Location: index.php?action=post&id=' . $postId . '#commentArea');
+		header('Location: ./?action=post&id=' . $postId . '#commentArea');
 	}
 }

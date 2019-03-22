@@ -20,7 +20,7 @@
 
   <!-- Header -->
   <header class="w3-container w3-center w3-padding-32"> 
-    <h1><b><a href="index.php">Billet simple pour l'Alaska</a></b></h1>
+    <h1><b><a href="./">Billet simple pour l'Alaska</a></b></h1>
     <p class="w3-hide-medium w3-hide-small">Bienvenue sur le blog de <span class="w3-tag">Jean Forteroche</span></p>
     <p class="w3-hide-large">Bienvenue sur le blog de <span class="w3-tag"><a href="#bio">Jean Forteroche</a></span></p>
   </header>
@@ -94,7 +94,7 @@
         </div>
       </div>
 
-      <form class="w3-container" action="index.php?action=login" method="post">
+      <form class="w3-container" action="./?action=login" method="post">
         <div class="w3-section">         
           <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Pseudo" name="username" required>           
           <input class="w3-input w3-border" type="password" placeholder="Mot de passe" name="password" required>
@@ -117,13 +117,13 @@
   <footer class="w3-container w3-dark-grey" style="padding:32px">
     <div class="w3-third">
       <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom w3-margin-right"><i class="fa fa-arrow-up w3-margin-right"></i>Retour en haut</a>
-      <a href="index.php" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-home"></i>&nbsp;&nbsp;Retour à l'Accueil</a><br>
+      <a href="./" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-home"></i>&nbsp;&nbsp;Retour à l'Accueil</a><br>
     <?php
     if(isset($_SESSION['admin']))
     {
       ?>
-      <a href="index.php?action=logout" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-sign-out w3-margin-right"></i>Déconnexion</a>
-      <a href="index.php?action=admin&part=preview" target="_blank" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-pencil w3-margin-right"></i>Zone Admin</a>
+      <a href="./?action=logout" class="w3-button w3-black w3-padding-large w3-margin-bottom w3-margin-right"><i class="fa fa-sign-out w3-margin-right"></i>Déconnexion</a>
+      <a href="./?action=admin&part=preview" target="_blank" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-pencil w3-margin-right"></i>Zone Admin</a>
       <?php
     }
     else

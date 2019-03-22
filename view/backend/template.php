@@ -31,7 +31,7 @@
   </div>
   <hr>
   <div class="w3-container">
-    <a href="index.php?action=admin&amp;part=preview"><h5>Tableau de bord</h5></a>
+    <a href="./?action=admin&amp;part=preview"><h5>Tableau de bord</h5></a>
   </div>
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Fermer le Menu</a>
@@ -40,13 +40,13 @@
         <a class="w3-bar-item w3-padding w3-black"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp; Articles</a>
         <ul>
           <li>
-            <a href="index.php?action=admin&amp;part=addArticle" class="w3-bar-item w3-button w3-padding"><i class="fa fa-plus w3-text-green" aria-hidden="true"></i>&nbsp; Ajouter</a>
+            <a href="./?action=admin&amp;part=addArticle" class="w3-bar-item w3-button w3-padding"><i class="fa fa-plus w3-text-green" aria-hidden="true"></i>&nbsp; Ajouter</a>
           </li>
           <li>
-            <a href="index.php?action=admin&amp;part=editArticle" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil w3-text-grey" aria-hidden="true"></i>&nbsp; Modifier</a>
+            <a href="./?action=admin&amp;part=editArticle" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil w3-text-grey" aria-hidden="true"></i>&nbsp; Modifier</a>
           </li>
           <li>
-            <a href="index.php?action=admin&amp;part=removeArticle" class="w3-bar-item w3-button w3-padding"><i class="fa fa-trash w3-text-red" aria-hidden="true"></i>&nbsp; Supprimer</a>
+            <a href="./?action=admin&amp;part=removeArticle" class="w3-bar-item w3-button w3-padding"><i class="fa fa-trash w3-text-red" aria-hidden="true"></i>&nbsp; Supprimer</a>
           </li>
         </ul>
       </li>
@@ -54,7 +54,7 @@
         <a class="w3-bar-item w3-padding w3-black"><i class="fa fa-comment" aria-hidden="true"></i>&nbsp; Commentaires</a>
         <ul>
           <li>
-            <a href="index.php?action=admin&part=moderate" class="w3-bar-item w3-button w3-padding"><i class="fa fa-ban w3-text-red" aria-hidden="true"></i>&nbsp; Modérer</a>
+            <a href="./?action=admin&part=moderate" class="w3-bar-item w3-button w3-padding"><i class="fa fa-ban w3-text-red" aria-hidden="true"></i>&nbsp; Modérer</a>
           </li>
         </ul>
       </li>     
@@ -69,7 +69,7 @@
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:300px;margin-top:43px;">
   <div class="w3-container w3-center w3-pale-green w3-text-green <?= isset($_SESSION['good']) ? 'w3-show' : 'w3-hide' ?>">
-    <p>Article <?= $_SESSION['good'] ?></p>
+    <p><?= $_SESSION['good'] ?></p>
     <?php unset($_SESSION['good']); ?>
   </div>
 
@@ -79,8 +79,8 @@
   <footer class="w3-container w3-padding-16 w3-dark-grey">
     <div class="w3-third">
       <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-arrow-up w3-margin-right"></i>Retour en haut</a><br>
-      <a href="index.php?action=logout" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-sign-out w3-margin-right"></i>Déconnexion</a>
-      <a href="index.php" target="_blank" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-pencil w3-margin-right"></i>Accueil</a>
+      <a href="./?action=logout" class="w3-button w3-black w3-padding-large w3-margin-right"><i class="fa fa-sign-out w3-margin-right"></i>Déconnexion</a>
+      <a href="./" target="_blank" class="w3-button w3-black w3-padding-large"><i class="fa fa-pencil w3-margin-right"></i>Accueil</a>
     </div>
   
     <div class="w3-twothird w3-right-align">
