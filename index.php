@@ -63,7 +63,15 @@ try
 						if(isset($_POST['delete'])) removeArticle();
 						else listRemoveArticles();
 					}
-					elseif($_GET['part'] == 'moderate') moderateComments();
+					elseif($_GET['part'] == 'moderate') 
+						if(isset($_GET['moderate']) && isset($_GET['id']) && $_GET['id'] > 0)
+						{
+							if($_GET['moderate'] == 'valid') validComment($_GET['id']);
+							elseif($_GET['moderate'] == 'delete') deleteComment($_GET['id']);
+							else throw new AdminException('Erreur de redirection');
+							
+						}
+						else moderateComments();
 					else throw new AdminException('Erreur de redirection');
 				}
 				else preview();

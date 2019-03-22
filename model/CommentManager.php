@@ -65,4 +65,18 @@ class CommentManager extends Manager
 
 		return $comments;
 	}
+
+	public function deleteReportComment($id)
+	{
+		$db = $this->dbConnect();
+		$req = $db->prepare('DELETE FROM t_comments_cmt WHERE cmt_id = ?');
+		$req->execute(array($id));
+	}
+
+	public function approuveReportComment($id)
+	{
+		$db = $this->dbConnect();
+		$req = $db->prepare('UPDATE t_comments_cmt SET cmt_report = 0 WHERE cmt_id = ?');
+		$req->execute(array($id));
+	}
 }

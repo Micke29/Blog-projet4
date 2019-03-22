@@ -3,38 +3,35 @@ ob_start();
 ?>
 <div class="w3-container w3-center">
 	<h2 class="w3-xlarge">Commentaires signalés</h2>
-	<form method="post" action="">
-	    <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
-		    <thead>
-		    	<th>Auteur</th>
-		    	<th style="width:85%">Commentaire</th>
-		    	<th><i class="fa fa-check w3-text-green" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-trash w3-text-red" aria-hidden="true"></i></th>
-		    </thead>
-		    <tbody>
-		    	<?php
-		    	$idName = 0;
-		    	while($reportComment = $reportComments->fetch())
-				{
-		    	?>
-		    	<tr>
-			        <td><?= $reportComment['cmt_author'] ?></td>
-			        <td><?= $reportComment['cmt_content'] ?></td>
-			        <td>
-			        	<input type="radio" name="<?= "moderate" . $idName ?>" id="<?= $reportComment['cmt_id'] ?>" value="valid.<?= $reportComment['cmt_id'] ?>">
-			        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			        	<input type="radio" name="<?= "moderate" . $idName ?>" id="<?= $reportComment['cmt_id'] ?>" value="delete.<?= $reportComment['cmt_id'] ?>">
-			        </td>        
-			    </tr>
-			    <?php
-			    $idName++;
-				}
-			    ?>
-		    </tbody>
-	    </table>
-	    <br>
-	    <button class="w3-button w3-show-inline-block w3-black">Gérer</button>
-	</form><br>
-  </div>
+	<table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
+	    <thead>
+	    	<th>Auteur</th>
+	    	<th style="width:80%">Commentaire</th>
+	    	<th class="w3-center"><i class="fa fa-check w3-text-green" aria-hidden="true"></i></th>
+	    	<th class="w3-center"><i class="fa fa-trash w3-text-red" aria-hidden="true"></i></th>
+	    </thead>
+	    <tbody>
+	    	<?php
+	    	while($reportComment = $reportComments->fetch())
+			{
+	    	?>
+	    	<tr>
+		        <td><?= $reportComment['cmt_author'] ?></td>
+		        <td><?= $reportComment['cmt_content'] ?></td>
+		        <td>
+		        	<a href="index.php?action=admin&amp;part=moderate&amp;moderate=valid&amp;id=<?= $reportComment['cmt_id'] ?>"><button class="w3-button w3-black w3-padding-right">Valider</button></a>
+		        </td>
+		        <td>
+		        	<a href="index.php?action=admin&amp;part=moderate&amp;moderate=delete&amp;id=<?= $reportComment['cmt_id'] ?>"><button class="w3-button w3-black">Supprimer</button></a>
+		        </td>        
+		    </tr>
+		    <?php
+			}
+		    ?>
+	    </tbody>
+	</table>
+	<br>
+</div>
 <?php
 $content = ob_get_clean();
 

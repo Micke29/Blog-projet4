@@ -14,12 +14,12 @@ function login()
 	if($affectedLines['act_count'] == 1) 
 	{
 		$_SESSION['admin'] = true;
-		header("Location: index.php?action=admin");
+		header("Location: ./?action=admin");
 	}
 	else
 	{
 		$_SESSION['badConnection'] = true;
-		header("Location: index.php");
+		header("Location: ./");
 	}
 }
 
@@ -29,7 +29,7 @@ function logout()
 
 	$adminManager->logoutAdmin();
 
-	header("Location: index.php");
+	header("Location: ./");
 }
 
 function preview()
@@ -77,13 +77,13 @@ function addArticle($title, $content)
 
 	if($add)
 	{
-		$_SESSION['good'] = 'ajouté';
-		header("Location: index.php?action=admin&part=preview");
+		$_SESSION['good'] = 'Article ajouté';
+		header("Location: ./?action=admin&part=preview");
 	}
 	else
 	{
 		$_SESSION['file'] = true;
-		header("Location: index.php?action=admin&part=addArticle");
+		header("Location: ./?action=admin&part=addArticle");
 	}
 }
 
@@ -96,13 +96,13 @@ function editArticle($title, $content, $id)
 
 	if($update)
 	{
-		$_SESSION['good'] = 'modifié';
-		header("Location: index.php?action=admin&part=preview");
+		$_SESSION['good'] = 'Article modifié';
+		header("Location: ./?action=admin&part=preview");
 	}
 	else
 	{
 		$_SESSION['error'] = true;
-		header("Location: index.php?action=admin&part=editArticle");
+		header("Location: ./?action=admin&part=editArticle");
 	}
 }
 
@@ -122,8 +122,8 @@ function removeArticle()
 		if($pictureId != 1) $pictureManager->deletePicturePost($pictureId);
 	}
 
-	$_SESSION['good'] = 'supprimé';
-	header("Location: index.php?action=admin&part=preview");
+	$_SESSION['good'] = 'Article(s) supprimé(s)';
+	header("Location: ./?action=admin&part=preview");
 }
 
 function moderateComments()
@@ -133,4 +133,24 @@ function moderateComments()
 	$reportComments = $commentManager->getReportComments();
 
 	require('view/backend/listCommentsModerateView.php');
+}
+
+function validComment($id)
+{
+	$commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
+
+	$commentManager->approuveReportComment($id);
+
+	$_SESSION['good'] = 'Commentaire validé';
+	header("Location: ./?action=admin&part=moderate");
+}
+
+function deleteComment($id)
+{
+	$commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
+
+	$commentManager->deleteReportComment($id);
+
+	$_SESSION['good'] = 'Commentaire supprimé';
+	header("Location: ./?action=admin&part=moderate");
 }
