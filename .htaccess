@@ -1,1 +1,2 @@
+ErrorDocument 403 /Blog-projet4/error/403.php
 ErrorDocument 404 /Blog-projet4/error/404.php
