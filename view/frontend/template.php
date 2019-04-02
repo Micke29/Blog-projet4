@@ -2,6 +2,7 @@
 <html lang="FR">
 <head>
   <meta charset="UTF-8">
+  <meta description="Bienvenue sur le blog de Jean Forteroche, auteur de Billet simple pour l'Alaska">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <title><?= isset($title) ? $title : 'Mon livre, Billet simple pour l\'Alaska' ?></title>
@@ -138,6 +139,7 @@
     <div class="w3-twothird w3-right-align">
       <p>Copyright &copy; 2019 Jean FORTEROCHE - Billet simple pour l'Alaska</p>
       <p><a>Mentions légales</a></p>
+      <p><a href="mailto:contact@forteroche.com">Contact</a></p>
       <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
     </div>
   </footer>
