@@ -25,12 +25,14 @@ $countComments = $commentManager->getCountComments($post['pst_id']);
         	if(isset($_SESSION['report'])) unset($_SESSION['report']);
         	while($comment = $comments->fetch())
 			{
+				$commentReport = $comment['cmt_report'];
         	?>
 	        <div class="w3-row w3-margin-bottom">
 	          <div class="w3-col l10 m9">
 	            <h4 style="margin-bottom: 0"><?= htmlspecialchars($comment['cmt_author']) ?> <span class="w3-opacity w3-medium"><?= htmlspecialchars($comment['cmt_date_fr']) ?></span>
 	            </h4>
-	            <h6 style="margin: 0"><a class="w3-text-red" href="./?action=report&amp;id=<?= $post['pst_id'] ?>&amp;commentId=<?= $comment['cmt_id'] ?>" title="Signaler"><i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;Signaler</a></h6>
+	            <h6 style="margin: 0"><?= $commentReport == FALSE ? '<a class="w3-text-red" href="./?action=report&amp;id='. $post['pst_id'] .'&amp;commentId='. $comment['cmt_id'] .'" title="Signaler"><i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;Signaler</a>' : '<span class="w3-text-deep-orange">Commentaire en attente de modération</span>' ?></h6>
+	           	
 	            <p><?= htmlspecialchars($comment['cmt_content']) ?></p>
 	          </div>
 	        </div>
