@@ -1,2 +1,7 @@
+# RewriteEngine on
+
+# RewriteCond %{HTTPS} off
+# RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
 ErrorDocument 403 /Blog-projet4/error/403.php
 ErrorDocument 404 /Blog-projet4/error/404.php
