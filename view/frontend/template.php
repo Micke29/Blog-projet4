@@ -2,7 +2,7 @@
 <html lang="FR">
 <head>
   <meta charset="UTF-8">
-  <meta description="Bienvenue sur le blog de Jean Forteroche, auteur de Billet simple pour l'Alaska">
+  <meta name="description" content="Bienvenue sur le blog de Jean Forteroche, auteur de Billet simple pour l'Alaska">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <title><?= isset($title) ? $title : 'Mon livre, Billet simple pour l\'Alaska' ?></title>
