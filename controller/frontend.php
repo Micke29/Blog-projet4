@@ -26,6 +26,9 @@ function post()
 
 function addComment($postId, $author, $comment)
 {
+	if (trim($author) == '' || trim($comment) == '') throw new UserException('Impossible d\'ajouter le commentaire !');
+	
+
 	$commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
 
 	$affectedLines = $commentManager->postComment($postId, $author, $comment);
